@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Auth;
+use Redirect;
 
 class CustomerApiController extends Controller
 {
@@ -16,7 +18,12 @@ class CustomerApiController extends Controller
      */
     public function getAll()
     {
-        return response()->json(['allcust' => 1]);
+        if(Auth::guest()){
+            return Redirect::to('auth/login');
+        }else {
+            return response()->json(['allcust' => 1]);
+        }
+        
     }
 
     /**

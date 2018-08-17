@@ -21,7 +21,7 @@ class HomeController extends Controller
         if(Auth::guest()){
             return Redirect::to('auth/login');
         }else {
-            return view('welcome');
+            return view('home');
         }
     }
 }
