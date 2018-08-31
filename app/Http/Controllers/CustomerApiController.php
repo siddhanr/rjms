@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Customer;
+use App\Address;
+use App\Job;
 use Auth;
 use Redirect;
 
@@ -21,10 +24,32 @@ class CustomerApiController extends Controller
         if(Auth::guest()){
             return Redirect::to('auth/login');
         }else {
-            return response()->json(['allcust' => 1]);
+            $customers = Customer::all();
+            return response()->json($customers);
         }
         
     }
+
+    public function getAddresses()
+    {
+        if(Auth::guest()){
+            return Redirect::to('auth/login');
+        }else {
+            $addresses = Address::all();
+            return response()->json($addresses);
+        }
+    }
+
+    public function getJobs()
+    {
+        if(Auth::guest()){
+            return Redirect::to('auth/login');
+        }else {
+            $jobs = Job::with('customer', 'address')->get();
+            return response()->json($jobs);
+        }
+    }
+
 
     /**
      * Show the form for creating a new resource.

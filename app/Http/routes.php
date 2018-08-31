@@ -32,3 +32,5 @@ Route::get('home', 'HomeController@index');
 
 //customer apis...
 Route::get('api/customer', 'CustomerApiController@getAll');
+Route::get('api/address', 'CustomerApiController@getAddresses');
+Route::get('api/job', 'CustomerApiController@getJobs');
