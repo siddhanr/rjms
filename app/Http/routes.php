@@ -31,6 +31,6 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::get('home', 'HomeController@index');
 
 //customer apis...
-Route::get('api/customer', 'CustomerApiController@getAll');
-Route::get('api/address', 'CustomerApiController@getAddresses');
-Route::get('api/job', 'CustomerApiController@getJobs');
+Route::get('api/customer', 'APIController@getCustomers');
+Route::get('api/address', 'APIController@getAddresses');
+Route::get('api/unarchived_jobs', 'APIController@getUnarchivedJobs');

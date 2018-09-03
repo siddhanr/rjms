@@ -22,4 +22,6 @@
 		</ul>
 	</div>
 </nav>
+<hr>
+<h1>nice</h1>
 @include('foot')
