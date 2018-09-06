@@ -34,3 +34,4 @@ Route::get('home', 'HomeController@index');
 Route::get('api/customer', 'APIController@getCustomers');
 Route::get('api/address', 'APIController@getAddresses');
 Route::get('api/unarchived_jobs', 'APIController@getUnarchivedJobs');
+Route::get('api/get_job', 'APIController@getJob');

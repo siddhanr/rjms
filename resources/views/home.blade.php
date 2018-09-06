@@ -153,6 +153,89 @@
 					<h4 class="editHeader"></h4>
 				</div>
 				<div class="modal-body">
+					<form action="#">
+						<div class="row">
+							<div class="col-sm-6">
+								<h4>Customer</h4>
+								<div class="form-group">
+									<label for="custNameEdit">Name: </label>
+									<input type="text" class="form-control" id="custNameEdit">
+								</div>
+								<div class="form-group">
+									<label for="custEmailEdit">Email: </label>
+									<input type="text" class="form-control" id="custEmailEdit">
+								</div>
+								<div class="form-group">
+									<label for="custPhoneEdit">Phone Number:</label>
+									<input type="text" class="form-control" id="custPhoneEdit">
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<h4>Address</h4>
+								<div class="form-group">
+									<label for="jobSuburbEdit">Area: </label>
+									<input type="text" class="form-control" id="jobSuburbEdit">
+								</div>
+								<div class="form-group">
+									<label for="jobAddressEdit">Address: </label>
+									<input type="text" class="form-control" id="jobAddressEdit">
+								</div>
+							</div>
+						</div>
+						<hr>
+						<h4>Job Details</h4>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="jobStatusEdit">Status: </label>
+									<select class="form-control" id="jobStatusEdit">
+										<option>REQUEST</option>
+										<option>QUOTE TO SEND</option>
+										<option>PENDING QUOTE</option>
+										<option>DEPOSIT</option>
+										<option>INVOICED</option>
+										<option>PAID</option>
+										<option>FOLLOW UP</option>
+										<option>ARCHIVED</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="roofTypeEdit">Roof Type: </label>
+									<input type="text" class="form-control" id="roofTypeEdit">
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label for="jobTypeEdit">Job Type: </label>
+									<select class="form-control" id="jobTypeEdit">
+										<option>R.REPAIR</option>
+										<option>R.RESTORATION</option>
+										<option>R.ASSESMENT</option>
+										<option>G.REPAIR</option>
+										<option>G.REPLACEMENT</option>
+										<option>H.WASH</option>
+										<option>EXTERIOR P.</option>
+										<option>INTERIOR P.</option>
+									</select>
+								</div>
+								<div class="form-group">
+									<label for="jobAreaEdit">Job Area: </label>
+									<input type="text" class="form-control" id="jobAreaEdit">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="jobPriceEdit">Price: </label>
+							<input type="text" class="form-control" id="jobPriceEdit">
+						</div>
+						<div class="form-group">
+							<label for="jobDescriptionEdit">Description/Notes</label>
+							<textarea class="form-control" rows="4" id="jobDescriptionEdit"></textarea>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-default">Submit</button>
+						</div>
+					</form>
 				</div>
 				<div class="modal-footer">
 				</div>

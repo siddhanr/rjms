@@ -14,32 +14,6 @@ use Redirect;
 
 class APIController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getCustomers()
-    {
-        if(Auth::guest()){
-            return Redirect::to('auth/login');
-        }else {
-            $customers = Customer::all();
-            return response()->json($customers);
-        }
-        
-    }
-
-    public function getAddresses()
-    {
-        if(Auth::guest()){
-            return Redirect::to('auth/login');
-        }else {
-            $addresses = Address::all();
-            return response()->json($addresses);
-        }
-    }
-
     public function getUnarchivedJobs()
     {
         if(Auth::guest()){
@@ -61,70 +35,34 @@ class APIController extends Controller
         }
     } 
 
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+    public function getJob() {
+        $id = request()->id;
+        $job = Job::where('id', '=', $id)
+               ->with('customer', 'address')
+               ->get();
+        return response()->json($job);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function getCustomers()
     {
-        //
+        if(Auth::guest()){
+            return Redirect::to('auth/login');
+        }else {
+            $customers = Customer::all();
+            return response()->json($customers);
+        }
+        
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function getAddresses()
     {
-        //
+        if(Auth::guest()){
+            return Redirect::to('auth/login');
+        }else {
+            $addresses = Address::all();
+            return response()->json($addresses);
+        }
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
