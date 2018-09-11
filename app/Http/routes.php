@@ -31,7 +31,12 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::get('home', 'HomeController@index');
 
 //customer apis...
-Route::get('api/customer', 'APIController@getCustomers');
-Route::get('api/address', 'APIController@getAddresses');
-Route::get('api/unarchived_jobs', 'APIController@getUnarchivedJobs');
-Route::get('api/get_job', 'APIController@getJob');
+Route::get('api/customer', 'CustomerController@getCustomers');
+Route::get('api/address', 'AddressController@getAddresses');
+Route::get('api/unarchived_jobs', 'JobController@getUnarchivedJobs');
+Route::get('api/get_job', 'JobController@getJob');
+
+Route::post('api/create_job', 'JobController@createJob');
+Route::put('api/job', 'JobController@updateJob');
+//Route::get('api/create_customer', 'CustomerController@createCustomer');
+

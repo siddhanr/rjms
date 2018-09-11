@@ -36,32 +36,33 @@
           			<h4 class="modal-title">Add New Job</h4>
 				</div>
 				<div class="modal-body">
-					<form action="#">
+					<form id="addNewJobForm" method="POST" action="api/create_job">
+						<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 						<div class="row">
 							<div class="col-sm-6">
 								<h4>Customer</h4>
 								<div class="form-group">
 									<label for="custName">Name: </label>
-									<input type="text" class="form-control" id="custName">
+									<input type="text" class="form-control" name="custName" id="custName">
 								</div>
 								<div class="form-group">
 									<label for="custEmail">Email: </label>
-									<input type="text" class="form-control" id="custEmail">
+									<input type="text" class="form-control" name="custEmail" id="custEmail">
 								</div>
 								<div class="form-group">
 									<label for="custPhone">Phone Number:</label>
-									<input type="text" class="form-control" id="custPhone">
+									<input type="text" class="form-control" name="custPhone" id="custPhone">
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<h4>Address</h4>
 								<div class="form-group">
 									<label for="jobSuburb">Area: </label>
-									<input type="text" class="form-control" id="jobSuburb">
+									<input type="text" class="form-control" name="jobSuburb" id="jobSuburb">
 								</div>
 								<div class="form-group">
 									<label for="jobAddress">Address: </label>
-									<input type="text" class="form-control" id="jobAddress">
+									<input type="text" class="form-control" name="jobAddress" id="jobAddress">
 								</div>
 							</div>
 						</div>
@@ -71,7 +72,7 @@
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label for="jobStatus">Status: </label>
-									<select class="form-control" id="jobStatus">
+									<select class="form-control" name="jobStatus" id="jobStatus">
 										<option>REQUEST</option>
 										<option>QUOTE TO SEND</option>
 										<option>PENDING QUOTE</option>
@@ -84,13 +85,13 @@
 								</div>
 								<div class="form-group">
 									<label for="roofType">Roof Type: </label>
-									<input type="text" class="form-control" id="roofType">
+									<input type="text" class="form-control" name="roofType" id="roofType">
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label for="jobType">Job Type: </label>
-									<select class="form-control" id="jobType">
+									<select class="form-control" name="jobType" id="jobType">
 										<option>R.REPAIR</option>
 										<option>R.RESTORATION</option>
 										<option>R.ASSESMENT</option>
@@ -103,20 +104,20 @@
 								</div>
 								<div class="form-group">
 									<label for="jobArea">Job Area: </label>
-									<input type="text" class="form-control" id="jobArea">
+									<input type="text" class="form-control" name="jobArea" id="jobArea">
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="jobPrice">Price: </label>
-							<input type="text" class="form-control" id="jobPrice">
+							<input type="text" class="form-control" name="jobPrice" id="jobPrice">
 						</div>
 						<div class="form-group">
 							<label for="jobDescription">Description/Notes</label>
-							<textarea class="form-control" rows="4" id="jobDescription"></textarea>
+							<textarea class="form-control" rows="4" name="jobDescription" id="jobDescription"></textarea>
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-default">Submit</button>
+							<button type="submit" class="btn btn-default" id="submitNewJob">Submit</button>
 						</div>
 					</form>
 				</div>
@@ -153,32 +154,34 @@
 					<h4 class="editHeader"></h4>
 				</div>
 				<div class="modal-body">
-					<form action="#">
+					<form id="editJobForm">
 						<div class="row">
 							<div class="col-sm-6">
 								<h4>Customer</h4>
+								<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+								<input type="hidden" name="jobId" id="jobId">
 								<div class="form-group">
 									<label for="custNameEdit">Name: </label>
-									<input type="text" class="form-control" id="custNameEdit">
+									<input type="text" class="form-control" name="custNameEdit" id="custNameEdit">
 								</div>
 								<div class="form-group">
 									<label for="custEmailEdit">Email: </label>
-									<input type="text" class="form-control" id="custEmailEdit">
+									<input type="text" class="form-control" name="custEmailEdit" id="custEmailEdit">
 								</div>
 								<div class="form-group">
 									<label for="custPhoneEdit">Phone Number:</label>
-									<input type="text" class="form-control" id="custPhoneEdit">
+									<input type="text" class="form-control" name="custPhoneEdit" id="custPhoneEdit">
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<h4>Address</h4>
 								<div class="form-group">
 									<label for="jobSuburbEdit">Area: </label>
-									<input type="text" class="form-control" id="jobSuburbEdit">
+									<input type="text" class="form-control" name="jobSuburbEdit" id="jobSuburbEdit">
 								</div>
 								<div class="form-group">
 									<label for="jobAddressEdit">Address: </label>
-									<input type="text" class="form-control" id="jobAddressEdit">
+									<input type="text" class="form-control" name="jobAddressEdit" id="jobAddressEdit">
 								</div>
 							</div>
 						</div>
@@ -188,7 +191,7 @@
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label for="jobStatusEdit">Status: </label>
-									<select class="form-control" id="jobStatusEdit">
+									<select class="form-control" name="jobStatusEdit" id="jobStatusEdit">
 										<option>REQUEST</option>
 										<option>QUOTE TO SEND</option>
 										<option>PENDING QUOTE</option>
@@ -201,13 +204,13 @@
 								</div>
 								<div class="form-group">
 									<label for="roofTypeEdit">Roof Type: </label>
-									<input type="text" class="form-control" id="roofTypeEdit">
+									<input type="text" class="form-control" name="roofTypeEdit" id="roofTypeEdit">
 								</div>
 							</div>
 							<div class="col-sm-6">
 								<div class="form-group">
 									<label for="jobTypeEdit">Job Type: </label>
-									<select class="form-control" id="jobTypeEdit">
+									<select class="form-control" name="jobTypeEdit">
 										<option>R.REPAIR</option>
 										<option>R.RESTORATION</option>
 										<option>R.ASSESMENT</option>
@@ -220,17 +223,17 @@
 								</div>
 								<div class="form-group">
 									<label for="jobAreaEdit">Job Area: </label>
-									<input type="text" class="form-control" id="jobAreaEdit">
+									<input type="text" class="form-control" name="jobAreaEdit" id="jobAreaEdit">
 								</div>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="jobPriceEdit">Price: </label>
-							<input type="text" class="form-control" id="jobPriceEdit">
+							<input type="text" class="form-control" name="jobPriceEdit" id="jobPriceEdit">
 						</div>
 						<div class="form-group">
 							<label for="jobDescriptionEdit">Description/Notes</label>
-							<textarea class="form-control" rows="4" id="jobDescriptionEdit"></textarea>
+							<textarea class="form-control" rows="4" name="jobDescriptionEdit" id="jobDescriptionEdit"></textarea>
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn btn-default">Submit</button>
