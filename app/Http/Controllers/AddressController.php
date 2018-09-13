@@ -24,8 +24,24 @@ class AddressController extends Controller
         }
     }
 
-    public function CreateAddress(Request $request)
+    public function getAddressFromSuburb(Request $request)
     {
+        if(Auth::guest()){
+            return Redirect::to('auth/login');
+        }else {
+            $addresses = Address::where('area', '=', $request->area)
+                         ->get();
+            return response()->json($addresses);
+        }
+    }
+
+    public function getSuburbs(){
+        if(Auth::guest()){
+            return Redirect::to('auth/login');
+        }else {
+            $suburbs = Address::select('area')->groupBy('area')->get();
+            return response()->json($suburbs);
+        }
         
     }
 

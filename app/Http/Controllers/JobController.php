@@ -133,6 +133,6 @@ class JobController extends Controller
         $job->notes = $request->jobDescriptionEdit;
         $job->save();
         
-        return response()->json($request->jobDescriptionEdit);
+        return response()->json('Entry Updated');
     }
 }

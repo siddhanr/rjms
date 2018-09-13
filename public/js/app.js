@@ -1,3 +1,23 @@
+function reloadCustomerList(){
+	$('#customer_list').empty();
+	$.getJSON("api/customers", function(data){
+	$.each(data, function(key, val){
+			var value = val.name + ' id:' + val.id;
+			var text = "(" + val.email + ")"
+	 		$('#customer_list').append($("<option>").attr({"data-value": val.id, "value": value}).text(text));
+		});
+	})
+}
+
+function reloadSuburbList(){
+	$('#suburb_list').empty();
+	$.getJSON("api/suburbs", function(data){
+		$.each(data, function(key, val){
+			$('#suburb_list').append($("<option>").attr({"value": val.area}))
+		});
+	});
+}
+
 var table = $('#mainJobTable').DataTable({
 	"ajax":{
 		"url": "api/unarchived_jobs",
@@ -38,6 +58,25 @@ $('#mainJobTable tbody').on('click', 'td:not(:first-child)', function() {
 	});
 });
 
+
+$("#custName").on('input', function(){
+	var str = $(this).val();
+	var index = str.lastIndexOf("id:");
+	if(index != -1){
+		var id = str.substring(index + 3);
+		$.getJSON('api/customer?id=' + id, function(data){
+			$("#custEmail").val(data.email);
+			$("#custPhone").val(data.phone_number);
+			$("#custName").val(str.substring(0, index));
+		});
+	}
+	else {
+		$("#custEmail").val(null);
+		$("#custPhone").val(null);
+	}
+	
+});
+
 $('#editJobForm').submit(function(e){
 	e.preventDefault();
 	$.ajax({
@@ -52,6 +91,18 @@ $('#editJobForm').submit(function(e){
 	})
 });
 
+$("#jobSuburb").on('input', function(){
+	$("#address_list").empty();
+	var suburb = $("#jobSuburb").val();
+	$.getJSON('api/address_from_suburb?area=' + suburb, function(data){
+		$.each(data, function(key, val){
+	 		$('#address_list').append($("<option>").attr({'value': val.address}));
+	 		//$('#customer_list').append($("<option>").attr({"data-value": val.id, "value": value}).text(text));
+		});
+	});
+});
+
+
 $('#addNewJobForm').submit(function(e) {
     e.preventDefault();
     $.ajax({
@@ -61,12 +112,16 @@ $('#addNewJobForm').submit(function(e) {
         success:function(msg, status, jqXHR){
         	alert(msg);
         	$('#newJobModal').modal('toggle');
+        	$('#addNewJobForm').trigger('reset');
+        	reloadCustomerList();
+        	reloadSuburbList();
         	table.ajax.reload();
         }
     });
 });
 
-
+reloadCustomerList();
+reloadSuburbList();
 
 
 

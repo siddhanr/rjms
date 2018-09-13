@@ -43,7 +43,10 @@
 								<h4>Customer</h4>
 								<div class="form-group">
 									<label for="custName">Name: </label>
-									<input type="text" class="form-control" name="custName" id="custName">
+									<input type="text" list="customer_list" class="form-control" name="custName" id="custName">
+									<datalist id="customer_list">
+
+									</datalist>
 								</div>
 								<div class="form-group">
 									<label for="custEmail">Email: </label>
@@ -58,11 +61,17 @@
 								<h4>Address</h4>
 								<div class="form-group">
 									<label for="jobSuburb">Area: </label>
-									<input type="text" class="form-control" name="jobSuburb" id="jobSuburb">
+									<input list="suburb_list" type="text" class="form-control" name="jobSuburb" id="jobSuburb">
+									<datalist id="suburb_list">
+
+									</datalist>
 								</div>
 								<div class="form-group">
 									<label for="jobAddress">Address: </label>
-									<input type="text" class="form-control" name="jobAddress" id="jobAddress">
+									<input type="text" class="form-control" name="jobAddress" id="jobAddress" list="address_list">
+									<datalist id="address_list">
+
+									</datalist>
 								</div>
 							</div>
 						</div>
@@ -122,7 +131,7 @@
 					</form>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+					<button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
 				</div>
 			</div>
 		</div>
@@ -151,6 +160,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="editHeader"></h4>
 				</div>
 				<div class="modal-body">
@@ -241,6 +251,8 @@
 					</form>
 				</div>
 				<div class="modal-footer">
+					<button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+				</div>
 				</div>
 			</div>
 		</div>
