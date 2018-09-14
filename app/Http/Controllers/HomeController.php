@@ -24,4 +24,12 @@ class HomeController extends Controller
             return view('home');
         }
     }
+    public function customer()
+    {
+        if(Auth::guest()){
+            return Redirect::to('auth/login');
+        }else {
+            return view('customer');
+        }
+    }
 }

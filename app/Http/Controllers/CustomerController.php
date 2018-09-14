@@ -40,9 +40,9 @@ class CustomerController extends Controller
     public function createCustomer(Request $request)
     {
         $customer = new Customer;
-        $customer->name = $request->custName;
-        $customer->email = $request->custEmail;
-        $customer->phone_number = $request->custPhone;
+        $customer->name = $request->cCustName;
+        $customer->email = $request->cCustEmail;
+        $customer->phone_number = $request->cCustPhone;
         $customerCheck = Customer::where('name', '=', $customer->name)
                          ->where('email', '=', $customer->email)
                          ->where('phone_number', '=', $customer->phone_number)

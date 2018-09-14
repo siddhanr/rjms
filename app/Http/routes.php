@@ -29,6 +29,7 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 //home routes... 
 Route::get('home', 'HomeController@index');
+Route::get('customer-page', 'HomeController@customer');
 
 //customer apis...
 Route::get('api/customers', 'CustomerController@getCustomers');
@@ -41,5 +42,5 @@ Route::get('api/get_job', 'JobController@getJob');
 
 Route::post('api/create_job', 'JobController@createJob');
 Route::put('api/job', 'JobController@updateJob');
-//Route::get('api/create_customer', 'CustomerController@createCustomer');
+Route::post('api/create_customer', 'CustomerController@createCustomer');
 

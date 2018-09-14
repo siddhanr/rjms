@@ -35,6 +35,19 @@ var table = $('#mainJobTable').DataTable({
 	]
 });
 
+var customer_table = $('#customerTable').DataTable({
+	"ajax":{
+		"url": "api/customers",
+		"dataSrc": ""
+	},
+	"responsive": "true",
+	"columns": [
+		{"data": 'name'},
+		{"data": 'email'},
+		{"data": 'phone_number'}
+	]
+});
+
 $('#mainJobTable tbody').on('click', 'td:not(:first-child)', function() {
 	$('#editJobModal').modal();
 	$('.editHeader').empty();
@@ -55,6 +68,18 @@ $('#mainJobTable tbody').on('click', 'td:not(:first-child)', function() {
 			$('#jobPriceEdit').val(val.price);
 			$('#jobDescriptionEdit').val(val.notes);
 		});
+	});
+});
+
+$('#customerTable tbody').on('click', 'td', function() {
+	var data = customer_table.row($(this).parents('tr')).data();
+	$('.editCHeader').empty();
+	$('#editCustomerModal').modal();
+	$.getJSON("api/customer?id=" + data.id , function(data){
+		$('.editCHeader').append('Edit Customer ' + data.name);
+		$('#cCustNameEdit').val(data.name);
+		$('#cCustEmailEdit').val(data.email);
+		$('#cCustPhoneEdit').val(data.phone_number);
 	});
 });
 
@@ -118,6 +143,23 @@ $('#addNewJobForm').submit(function(e) {
         	table.ajax.reload();
         }
     });
+});
+
+$('#newCustomerForm').submit(function(e) {
+	e.preventDefault();
+	$.ajax({
+		url:'api/create_customer',
+		type:'post',
+		data:$('#newCustomerForm').serialize(),
+		success:function(msg, status, jqXHR){
+			window.alert(msg);
+			customer_table.ajax.reload()
+			if(msg === 'Customer Added'){
+				$('#newCustomerModal').modal('toggle');
+				$('#newCustomerForm').trigger('reset');
+			}
+		}
+	})
 });
 
 reloadCustomerList();

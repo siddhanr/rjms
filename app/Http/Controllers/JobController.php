@@ -20,7 +20,7 @@ class JobController extends Controller
             return Redirect::to('auth/login');
         }else {
             $jobs = Job::with('customer', 'address')
-                    ->where('archived', '!=', 1)
+                    ->where('status', '!=', 'ARCHIVED')
                     ->orderBy('updated_at', 'DESC')
                     ->orderBy('id', 'DESC')
                     ->get();
