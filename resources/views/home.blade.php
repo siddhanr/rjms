@@ -32,7 +32,7 @@
           			<h4 class="modal-title">Add New Job</h4>
 				</div>
 				<div class="modal-body">
-					<form id="addNewJobForm" method="POST" action="api/create_job">
+					<form id="addNewJobForm" method="POST" action="api/create_job" name="addNewJobForm">
 						<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
 						<div class="row">
 							<div class="col-sm-6">
@@ -151,6 +151,9 @@
 			
 		</tbody>
 	</table>
+
+	<button type="button" class="btn btn-default archived-button">View Archived</button>
+	<button type="button" class="btn btn-default unarchived-button">View Unarchived</button>
 
 	<div class="modal fade" id="editJobModal" role="dialog">
 		<div class="modal-dialog">

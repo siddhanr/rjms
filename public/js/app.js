@@ -71,12 +71,13 @@ $('#mainJobTable tbody').on('click', 'td:not(:first-child)', function() {
 	});
 });
 
-$('#customerTable tbody').on('click', 'td', function() {
+$('#customerTable tbody').on('click', 'td:not(:first-child)', function() {
 	var data = customer_table.row($(this).parents('tr')).data();
 	$('.editCHeader').empty();
 	$('#editCustomerModal').modal();
 	$.getJSON("api/customer?id=" + data.id , function(data){
 		$('.editCHeader').append('Edit Customer ' + data.name);
+		$('#cCustId').val(data.id);
 		$('#cCustNameEdit').val(data.name);
 		$('#cCustEmailEdit').val(data.email);
 		$('#cCustPhoneEdit').val(data.phone_number);
@@ -104,16 +105,46 @@ $("#custName").on('input', function(){
 
 $('#editJobForm').submit(function(e){
 	e.preventDefault();
-	$.ajax({
-		url:'api/job',
-		type:'put',
-		data:$('#editJobForm').serialize(),
-		success:function(msg, status, jqXHR){
-			alert(msg);
-			$('#editJobModal').modal('toggle');
-			table.ajax.reload();
-		}
-	})
+	if ($('#custNameEdit').val() == ''){
+		window.alert('Name cannot be empty');
+	}
+	else if ($('#jobSuburbEdit').val() == ''){
+		window.alert('Suburb cannot be empty');
+	}
+	else if ($('#jobAddressEdit').val() == ''){
+		window.alert('Address cannot be empty');
+	}
+	else{
+		$.ajax({
+			url:'api/job',
+			type:'put',
+			data:$('#editJobForm').serialize(),
+			success:function(msg, status, jqXHR){
+				alert(msg);
+				$('#editJobModal').modal('toggle');
+				table.ajax.reload();
+			}
+		})
+	}
+});
+
+$('#editCustomerForm').submit(function(e){
+	e.preventDefault();
+	if ($('#cCustNameEdit').val() == ''){
+		window.alert('Name cannot be empty');
+	}
+	else {
+		$.ajax({
+			url:'api/customer',
+			type:'put',
+			data:$('#editCustomerForm').serialize(),
+			success:function(msg, status, jqXHR){
+				alert(msg);
+				$('#editCustomerModal').modal('toggle');
+				customer_table.ajax.reload();
+			}
+		});
+	}
 });
 
 $("#jobSuburb").on('input', function(){
@@ -130,38 +161,62 @@ $("#jobSuburb").on('input', function(){
 
 $('#addNewJobForm').submit(function(e) {
     e.preventDefault();
-    $.ajax({
-        url:'api/create_job',
-        type:'post',
-        data:$('#addNewJobForm').serialize(),
-        success:function(msg, status, jqXHR){
-        	alert(msg);
-        	$('#newJobModal').modal('toggle');
-        	$('#addNewJobForm').trigger('reset');
-        	reloadCustomerList();
-        	reloadSuburbList();
-        	table.ajax.reload();
-        }
-    });
+    if ($('#custName').val() == ''){
+		window.alert('Name cannot be empty');
+	}
+	else if ($('#jobSuburb').val() == ''){
+		window.alert('Suburb cannot be empty');
+	}
+	else if ($('#jobAddress').val() == ''){
+		window.alert('Address cannot be empty');
+	}
+
+	else{
+    	$.ajax({
+    	    url:'api/create_job',
+    	    type:'post',
+    	    data:$('#addNewJobForm').serialize(),
+    	    success:function(msg, status, jqXHR){
+    	    	alert(msg);
+    	    	$('#newJobModal').modal('toggle');
+    	    	$('#addNewJobForm').trigger('reset');
+    	    	reloadCustomerList();
+    	    	reloadSuburbList();
+    	    	table.ajax.reload();
+    	    }
+    	});
+	}
 });
 
 $('#newCustomerForm').submit(function(e) {
 	e.preventDefault();
-	$.ajax({
-		url:'api/create_customer',
-		type:'post',
-		data:$('#newCustomerForm').serialize(),
-		success:function(msg, status, jqXHR){
-			window.alert(msg);
-			customer_table.ajax.reload()
-			if(msg === 'Customer Added'){
-				$('#newCustomerModal').modal('toggle');
-				$('#newCustomerForm').trigger('reset');
+	if ($('#cCustName').val() == ''){
+		window.alert('Name cannot be empty');
+	}
+	else{
+		$.ajax({
+			url:'api/create_customer',
+			type:'post',
+			data:$('#newCustomerForm').serialize(),
+			success:function(msg, status, jqXHR){
+				window.alert(msg);
+				customer_table.ajax.reload()
+				if(msg === 'Customer Added'){
+					$('#newCustomerModal').modal('toggle');
+					$('#newCustomerForm').trigger('reset');
+				}
 			}
-		}
-	})
+		})
+	}
 });
 
+$('.archived-button').on('click', function(){
+	table.ajax.url('api/archived_jobs').load();
+});
+
+$('.unarchived-button').on('click', function(){
+	table.ajax.url('api/unarchived_jobs').load();
+});
 reloadCustomerList();
 reloadSuburbList();
 

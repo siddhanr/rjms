@@ -67,6 +67,7 @@
 				<div class="modal-body">
 					<form id="editCustomerForm">
 						<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+						<input type="hidden" name="cCustId" id="cCustId">
 						<div class="form-group">
 							<label for="cCustNameEdit">Name:</label>
 							<input type="text" class="form-control" name="cCustNameEdit" id="cCustNameEdit">

@@ -34,10 +34,12 @@ Route::get('customer-page', 'HomeController@customer');
 //customer apis...
 Route::get('api/customers', 'CustomerController@getCustomers');
 Route::get('api/customer', 'CustomerController@getCustomer');
+Route::put('api/customer', 'CustomerController@updateCustomer');
 Route::get('api/address', 'AddressController@getAddresses');
 Route::get('api/address_from_suburb', 'AddressController@getAddressFromSuburb');
 Route::get('api/suburbs', 'AddressController@getSuburbs');
 Route::get('api/unarchived_jobs', 'JobController@getUnarchivedJobs');
+Route::get('api/archived_jobs', 'JobController@getArchivedJobs');
 Route::get('api/get_job', 'JobController@getJob');
 
 Route::post('api/create_job', 'JobController@createJob');

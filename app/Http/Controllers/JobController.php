@@ -28,6 +28,18 @@ class JobController extends Controller
         }
     }
 
+    public function getArchivedJobs()
+    {
+        if(Auth::guest()){
+            return Redirect::to('auth/login');
+        }else {
+            $jobs = Job::with('customer', 'address')
+                    ->where('status', '=', 'ARCHIVED')
+                    ->get();
+            return response()->json($jobs);
+        }
+    }
+
     public function getAllJobs() 
     {
         if(Auth::guest()){
@@ -46,12 +58,7 @@ class JobController extends Controller
                ->get();
         return response()->json($job);
     }
-
-    public function nice()
-    {
-        return 'nice';
-    }
-
+    
     public function createJob(Request $request)
     {
         //Check & save customer if not exists (make this a function?)

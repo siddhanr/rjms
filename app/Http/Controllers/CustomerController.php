@@ -60,12 +60,13 @@ class CustomerController extends Controller
 
     public function updateCustomer(Request $request)
     {
-        $customer = Customer::where('id', '=', $job->customer->id)
+        $customer = Customer::where('id', '=', $request->cCustId)
                     ->first();
-        $customer->name = $request->custNameEdit;
-        $customer->phone_number = $request->custPhoneEdit;
-        $customer->email = $request->custEmailEdit;
+        $customer->name = $request->cCustNameEdit;
+        $customer->phone_number = $request->cCustPhoneEdit;
+        $customer->email = $request->cCustEmailEdit;
         $customer->save();
+        return response()->json('Customer Updated');
     }
 
 }
