@@ -142,4 +142,14 @@ class JobController extends Controller
         
         return response()->json('Entry Updated');
     }
+
+    public function deleteJob(Request $request)
+    {
+        $jobId = $request->jobId;
+        $job = Job::where('id', '=', $jobId)
+                    ->first();
+        $job->delete();
+        $message = 'Job ' . $jobId . ' Deleted';
+        return response()->json($message);
+    }
 }

@@ -121,8 +121,8 @@
 							<label for="jobDescription">Description/Notes</label>
 							<textarea class="form-control" rows="4" name="jobDescription" id="jobDescription"></textarea>
 						</div>
-						<div class="form-group">
-							<button type="submit" class="btn btn-default" id="submitNewJob">Submit</button>
+						<div class="form-group text-right">
+							<button type="submit" class="btn btn-success" id="submitNewJob">Submit</button>
 						</div>
 					</form>
 				</div>
@@ -152,8 +152,8 @@
 		</tbody>
 	</table>
 
-	<button type="button" class="btn btn-default archived-button">View Archived</button>
-	<button type="button" class="btn btn-default unarchived-button">View Unarchived</button>
+	<button type="button" class="btn btn-default unarchived-button">View Active Jobs</button>
+	<button type="button" class="btn btn-default archived-button">View Archived Jobs</button>
 
 	<div class="modal fade" id="editJobModal" role="dialog">
 		<div class="modal-dialog">
@@ -245,7 +245,8 @@
 							<textarea class="form-control" rows="4" name="jobDescriptionEdit" id="jobDescriptionEdit"></textarea>
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-default">Submit</button>
+							<button type="button" id="deleteJob" class="btn btn-danger">Delete</button>
+							<button type="submit" class="btn btn-success pull-right">Submit</button>
 						</div>
 					</form>
 				</div>

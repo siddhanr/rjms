@@ -5,3 +5,8 @@
 .btn-add-new {
 	margin-bottom:20px;
 }
+
+.btn-right {
+	float:right;
+	margin: 10px;
+}

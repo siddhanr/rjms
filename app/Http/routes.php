@@ -46,3 +46,5 @@ Route::post('api/create_job', 'JobController@createJob');
 Route::put('api/job', 'JobController@updateJob');
 Route::post('api/create_customer', 'CustomerController@createCustomer');
 
+Route::delete('api/job', 'JobController@deleteJob');
+

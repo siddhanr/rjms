@@ -210,6 +210,24 @@ $('#newCustomerForm').submit(function(e) {
 	}
 });
 
+$('#deleteJob').on('click', function(){
+	var jobId = $('#jobId').val();
+	if (window.confirm("Are you sure you want to delete this job?")) { 
+  		$.ajax({
+  			url:'api/job',
+  			type:'delete',
+  			data: $('#editJobForm').serialize(),
+  			success:function(msg, status, jqXHR){
+  				alert(msg);
+  				$('#editJobModal').modal('toggle');
+  				reloadCustomerList();
+    	    	reloadSuburbList();
+    	    	table.ajax.reload();
+  			}
+  		});
+	}
+});
+
 $('.archived-button').on('click', function(){
 	table.ajax.url('api/archived_jobs').load();
 });
