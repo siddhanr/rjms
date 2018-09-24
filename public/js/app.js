@@ -32,7 +32,9 @@ var table = $('#mainJobTable').DataTable({
 		{"data": 'customer.email'},
 		{"data": 'address.area'},
 		{"data": 'address.address'}
-	]
+	],
+	'order':[[0, "desc"]],
+	'iDisplayLength':25
 });
 
 var customer_table = $('#customerTable').DataTable({
