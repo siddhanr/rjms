@@ -4,13 +4,12 @@
 		<div class="navbar-header">
 			<a class="navbar-brand" href="home">Job Manager</a>
 		</div>
-		<
 		<ul class="nav navbar-nav">
 			<li>
 				<a href="home">Jobs</a>
 			</li>
 			<li class="active">
-				<a href="customer-table">Customers</a>
+				<a href="customer-page">Customers</a>
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
@@ -44,8 +43,8 @@
 							<label for="cCustPhone">Phone Number:</label>
 							<input type="text" class="form-control" name="cCustPhone" id="cCustPhone">
 						</div>
-						<div class="form-group">
-							<button type="submit" class="btn btn-default" id="submitNewCustomer">Submit</button>
+						<div class="form-group text-right">
+							<button type="submit" class="btn btn-success" id="submitNewCustomer">Submit</button>
 						</div>
 					</form>
 				</div>
@@ -81,7 +80,8 @@
 							<input type="text" class="form-control" id="cCustPhoneEdit" name="cCustPhoneEdit">
 						</div>
 						<div class="form-group">
-							<button type="submit" class="btn btn-default">Submit</button>
+							<button type="button" class="btn btn-danger" id="deleteCustomer">Delete</button>
+							<button type="submit" class="btn btn-success pull-right">Submit</button>
 						</div>
 					</form>
 				</div>

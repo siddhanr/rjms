@@ -34,7 +34,7 @@ var table = $('#mainJobTable').DataTable({
 		{"data": 'address.address'}
 	],
 	'order':[[0, "desc"]],
-	'iDisplayLength':25
+	'iDisplayLength':50
 });
 
 var customer_table = $('#customerTable').DataTable({
@@ -47,7 +47,8 @@ var customer_table = $('#customerTable').DataTable({
 		{"data": 'name'},
 		{"data": 'email'},
 		{"data": 'phone_number'}
-	]
+	],
+	'iDisplayLength':50
 });
 
 $('#mainJobTable tbody').on('click', 'td:not(:first-child)', function() {
@@ -227,6 +228,24 @@ $('#deleteJob').on('click', function(){
     	    	table.ajax.reload();
   			}
   		});
+	}
+});
+
+$('#deleteCustomer').on('click', function(){
+	var custId = $('#cCustId').val();
+	if (window.confirm("Are you sure you want to delete this customer?")) {
+		$.ajax({
+			url:'api/customer',
+			type:'delete',
+			data: $('#editCustomerForm').serialize(),
+			success:function(msg, status, jqXHR){
+				window.alert(msg);
+				$('#editCustomerModal').modal('toggle');
+				reloadCustomerList();
+				reloadSuburbList();
+				customer_table.ajax.reload()
+			}
+		});
 	}
 });
 

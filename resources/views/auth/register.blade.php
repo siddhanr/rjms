@@ -1,5 +1,5 @@
 <!-- resources/views/auth/register.blade.php -->
-
+@include('head')
 <form method="POST" action="register">
     {!! csrf_field() !!}
 
@@ -27,3 +27,4 @@
         <button type="submit">Register</button>
     </div>
 </form>
+@include('foot')

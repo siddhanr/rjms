@@ -69,4 +69,12 @@ class CustomerController extends Controller
         return response()->json('Customer Updated');
     }
 
+    public function deleteCustomer(Request $request)
+    {
+        $customer = Customer::where('id', '=', $request->cCustId)
+                    ->first();
+        $customer->delete();
+        return response()->json('Customer Deleted');
+    }
+
 }
