@@ -50,9 +50,9 @@ class JobController extends Controller
         }
     } 
 
-    public function getJob() 
+    public function getJob(Request $request) 
     {
-        $id = request()->id;
+        $id = $request->id;
         $job = Job::where('id', '=', $id)
                ->with('customer', 'address')
                ->get();

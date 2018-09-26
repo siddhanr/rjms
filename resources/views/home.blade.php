@@ -151,8 +151,8 @@
 		</tbody>
 	</table>
 
-	<button type="button" class="btn btn-default unarchived-button">View Active Jobs</button>
-	<button type="button" class="btn btn-default archived-button">View Archived Jobs</button>
+	<button type="button" class="btn btn-default unarchived-button">Active Jobs</button>
+	<button type="button" class="btn btn-default archived-button">Archived Jobs</button>
 
 	<div class="modal fade" id="editJobModal" role="dialog">
 		<div class="modal-dialog">
