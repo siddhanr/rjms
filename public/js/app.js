@@ -180,12 +180,17 @@ $('#addNewJobForm').submit(function(e) {
     	    type:'post',
     	    data:$('#addNewJobForm').serialize(),
     	    success:function(msg, status, jqXHR){
-    	    	alert(msg);
-    	    	$('#newJobModal').modal('toggle');
-    	    	$('#addNewJobForm').trigger('reset');
-    	    	reloadCustomerList();
-    	    	reloadSuburbList();
-    	    	table.ajax.reload();
+    	    	if (msg == 'ID already exist'){
+    	    		alert(msg);
+    	    	}
+    	    	else {
+    	    		alert(msg);
+    	    		$('#newJobModal').modal('toggle');
+    	    		$('#addNewJobForm').trigger('reset');
+    	    		reloadCustomerList();
+    	    		reloadSuburbList();
+    	    		table.ajax.reload();
+    	    	}
     	    }
     	});
 	}

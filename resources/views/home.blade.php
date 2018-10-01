@@ -33,6 +33,10 @@
 				<div class="modal-body">
 					<form id="addNewJobForm" method="POST" action="api/create_job" name="addNewJobForm">
 						<input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+						<div class="form-group">
+							<label for="newJobId">Job ID: </label>
+							<input type="number" class="form-control" name="newJobId" id="newJobId">
+						</div>
 						<div class="row">
 							<div class="col-sm-6">
 								<h4>Customer</h4>

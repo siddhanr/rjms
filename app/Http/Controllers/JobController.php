@@ -107,6 +107,17 @@ class JobController extends Controller
         $job->job_area = $request->jobArea;
         $job->price = $request->jobPrice;
         $job->notes = $request->jobDescription;
+        $jobId = $request->newJobId;
+        if ($jobId != ''){
+            $jobIdCheck = Job::where('id', '=', $jobId)
+                          ->get();
+            if (sizeof($jobIdCheck) > 0){
+                return response()->json('ID already exist');
+            }
+            else {
+                $job->id = $jobId;
+            }
+        }
         $job->save();
         return response()->json('Job Added');
     }
