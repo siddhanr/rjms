@@ -9,22 +9,22 @@ A web app for a roofing company to easily manage its jobs and customers. Web app
 - DataTables
 - Bootstrap 3
 
-#Screenshots:
-#Main job table view
+# Screenshots:
+# Main job table view
 ![Alt text](public/screenshot/ss1.jpg?raw=true "Main Job Table")
 
-#Add new job form
+# Add new job form
 ![Alt text](public/screenshot/ss2.jpg?raw=true "Add new job 1")
 ![Alt text](public/screenshot/ss3.jpg?raw=true "Add new job 2")
 
-#Edit job form
+# Edit job form
 ![Alt text](public/screenshot/ss4.jpg?raw=true "Edit job 1")
 ![Alt text](public/screenshot/ss5.jpg?raw=true "Edit job 2")
 
-#Customer table
+# Customer table
 ![Alt text](public/screenshot/ss6.jpg?raw=true "Main Job Table")
 
-#Add new customer
+# Add new customer
 ![Alt text](public/screenshot/ss7.jpg?raw=true "Main Job Table")
 
 
